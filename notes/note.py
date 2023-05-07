@@ -3,8 +3,9 @@ import datetime
 
 class note():
     counter = 0
-    def __init__(self,heading,body):
-        note.counter+=1
+
+    def __init__(self, heading, body):
+        note.counter += 1
         self.id = note.counter
         self.date = datetime.datetime.now()
         self.set_heading(heading)

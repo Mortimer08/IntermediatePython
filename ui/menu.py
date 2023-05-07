@@ -1,4 +1,3 @@
-
 class Menu:
 
     def __init__(self, view, welcome):
@@ -14,14 +13,14 @@ class Menu:
     def console_face(self):
         console_face = self.welcome
         commands_count = 1
-        console_face += "  "
+        console_face += "\n"
         for command in self.commands_list:
-            console_face += "  "
-            console_face += commands_count
+            console_face += "\t"
+            console_face += str(commands_count)
             commands_count += 1
             console_face += ". "
             console_face += command.description
-            console_face += "  "
+            console_face += "\n"
         return console_face
 
     def set_welcome(self, welcome):
@@ -29,3 +28,7 @@ class Menu:
 
     def get_view(self):
         return self.console_view
+
+    def run_menu_command(self, menu_item_number):
+        self.commands_list[menu_item_number-1].run_command()
+

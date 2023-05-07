@@ -1,5 +1,4 @@
-from mcv import controller
+from mpv.presenter import Presenter
 
 if __name__ == '__main__':
-    controller.start()
-
+    Presenter().start()
