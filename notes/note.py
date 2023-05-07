@@ -1,13 +1,13 @@
 import datetime
 
 
-class note():
+class Note():
     counter = 0
 
     def __init__(self, heading, body):
-        note.counter += 1
-        self.id = note.counter
-        self.date = datetime.datetime.now()
+        Note.counter += 1
+        self.id = Note.counter
+        self.date = f'{datetime.datetime.now():{"%Y-%m-%d %H:%M:%S"}}'
         self.set_heading(heading)
         self.set_body(body)
 
@@ -18,6 +18,12 @@ class note():
         self.body = body
 
     def show(self):
-        print(self.id)
-        print(self.heading)
-        print(self.body)
+        note_face = '\n'
+        note_face += f'ID: {str(self.id)}'
+        note_face += '\n'
+        note_face += f'Дата создания: {str(self.date)}'
+        note_face += '\n'
+        note_face += self.heading
+        note_face += '\n'
+        note_face += self.body
+        return note_face

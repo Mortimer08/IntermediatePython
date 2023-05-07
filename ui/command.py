@@ -36,6 +36,13 @@ class SaveNotes(Command):
     def run_command(self):
         self.menu.get_view().save_notes()
 
+class LoadNotes(Command):
+    def __init__(self, menu, description='Загрузить заметки'):
+        Command.__init__(self, menu, description)
+
+    def run_command(self):
+        self.menu.get_view().load_notes()
+
 class ExitCommand(Command):
     def __init__(self, menu, description='Выход'):
         Command.__init__(self, menu, description)

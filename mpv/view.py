@@ -17,8 +17,6 @@ class View:
                 self.main.run_menu_command(int(choice))
             else:
                 print('Недопустимая команда')
-        # print('running_command_number_', command_number)
-        # print('get_data_from_note_book')
 
     def set_presenter(self, presenter):
         self.presenter = presenter
@@ -27,7 +25,10 @@ class View:
         print(self.main.console_face())
 
     def add_note(self):
-        self.presenter.add_note()
+
+        note = {'header': input('Введите заголовок: ')}
+        note['body'] = input('Введите содержание: ')
+        self.presenter.add_note(note)
 
     def show_all_notes(self):
         print(self.presenter.show_all_notes())
@@ -37,6 +38,9 @@ class View:
 
     def save_notes(self):
         self.presenter.save_notes()
+
+    def load_notes(self):
+        self.presenter.load_notes()
 
     def exit_command(self):
         print('Работа завершена')
