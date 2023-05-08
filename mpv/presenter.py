@@ -18,8 +18,8 @@ class Presenter:
     def show_all_notes(self):
         return self.model.get_all_notes()
 
-    def delete_note(self):
-        self.model.delete_note(3)
+    def delete_note(self, note_id):
+        self.model.delete_note(note_id)
 
     def save_notes(self):
         self.model.save_notes_to_storage()

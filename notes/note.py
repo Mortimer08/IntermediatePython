@@ -6,11 +6,15 @@ class Note():
 
     def __init__(self, heading, body):
         Note.counter += 1
-        self.id = Note.counter
+        self.id = str(Note.counter)
         self.date = f'{datetime.datetime.now():{"%Y-%m-%d %H:%M:%S"}}'
         self.set_heading(heading)
         self.set_body(body)
+    def set_ID(self, id):
+        self.id = id
 
+    def set_date(self, date):
+        self.date = date
     def set_heading(self, heading):
         self.heading = heading
 

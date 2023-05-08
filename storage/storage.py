@@ -1,4 +1,4 @@
-from notes.notebook import NoteBook
+import os.path
 class Storage:
     def __init__(self):
         pass
@@ -10,13 +10,13 @@ class Storage:
         print('data_loaded')
 class FileStorage(Storage):
     def __init__(self):
-        self.data_path = open('data/data_path.txt', 'r').read()
-        self.note_book = NoteBook()
+        path = open(os.path.normpath('data/data_path.txt'), 'r').read()
+        self.data_path = os.path.normpath(path)
 
-    def save(self):
-        file = open(self.data_path, 'w+')
-        file.writelines('data_saved')
-        print('data_saved')
+    def save(self, data):
+        file = open(self.data_path, 'w')
+        file.writelines(data)
+        #print('data_saved')
 
     def load(self):
         file = open(self.data_path, 'r')
