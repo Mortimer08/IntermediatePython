@@ -28,6 +28,12 @@ class DeleteNote(Command):
 
     def run_command(self):
         self.menu.get_view().delete_note()
+class EditNote(Command):
+    def __init__(self, menu, description='Редактировать заметку'):
+        Command.__init__(self, menu, description)
+
+    def run_command(self):
+        self.menu.get_view().edit_note()
 
 class SaveNotes(Command):
     def __init__(self, menu, description='Сохранить заметки'):

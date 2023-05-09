@@ -34,8 +34,15 @@ class View:
         print(self.presenter.show_all_notes())
 
     def delete_note(self):
-        user_choice = str(input('Введите id заметки: '))
+        user_choice = input('Введите id заметки: ')
         self.presenter.delete_note(user_choice)
+
+    def edit_note(self):
+        user_choice = input('Введите id заметки: ')
+        note = {'header': input('Введите заголовок: ')}
+        note['body'] = input('Введите содержание: ')
+        self.presenter.edit_note(user_choice, note)
+
 
     def save_notes(self):
         self.presenter.save_notes()

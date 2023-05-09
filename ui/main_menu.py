@@ -8,6 +8,7 @@ class MainMenu(Menu):
         Menu.add_command(self, cmd.AddNote(self))
         Menu.add_command(self, cmd.ShowAllNotes(self))
         Menu.add_command(self, cmd.DeleteNote(self))
+        Menu.add_command(self, cmd.EditNote(self))
         Menu.add_command(self, cmd.SaveNotes(self))
         Menu.add_command(self, cmd.LoadNotes(self))
         Menu.add_command(self, cmd.ExitCommand(self))

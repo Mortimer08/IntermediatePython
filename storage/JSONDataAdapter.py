@@ -9,10 +9,11 @@ class JSONDataAdapter:
         try:
             target_note_book = NoteBook()
             json_note_book = json.loads(data)
-            for note in json_note_book['notes_list'].values():
-                target_note = Note(note['heading'], note['body'])
-                target_note.set_ID(note['id'])
-                target_note.set_date(note['date'])
+            for id in json_note_book['notes_list'].keys():
+                json_note = json_note_book['notes_list'][id]
+                target_note = Note(json_note['heading'], json_note['body'])
+                #target_note.set_ID(note['id'])
+                target_note.set_date(json_note['date'])
                 target_note_book.add(target_note)
             return target_note_book
         except AttributeError:

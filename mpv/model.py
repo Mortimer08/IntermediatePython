@@ -19,6 +19,9 @@ class Model:
     def delete_note(self, note_id):
         self.note_book.delete(note_id)
 
+    def edit_note(self, note_id, note):
+        self.note_book.replace(note_id, Note(note['header'], note['body']))
+
     def save_notes_to_storage(self):
         self.storage.save(JSONDataAdapter.to_json(self.note_book))
 
@@ -26,3 +29,6 @@ class Model:
         data = self.storage.load()
         #print(data)
         self.note_book = JSONDataAdapter.from_json(data)
+
+    def is_exist(self, id):
+        self.note_book.is_exist(id)

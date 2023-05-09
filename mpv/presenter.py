@@ -21,8 +21,14 @@ class Presenter:
     def delete_note(self, note_id):
         self.model.delete_note(note_id)
 
+    def edit_note(self, note_id, note):
+        self.model.edit_note(note_id, note)
+
     def save_notes(self):
         self.model.save_notes_to_storage()
 
     def load_notes(self):
         self.model.load_notes_from_storage()
+
+    def is_exist(self, id):
+        self.model.is_exist(id)
