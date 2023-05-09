@@ -1,9 +1,11 @@
 from notes.notebook import NoteBook
 from notes.note import Note
-from storage.JSONDataAdapter import JSONDataAdapter
+
+
 class Model:
-    def __init__(self, storage):
+    def __init__(self, storage, formatter):
         self.storage = storage
+        self.formatter = formatter
         self.note_book = NoteBook()
 
     def add_note(self, note):
@@ -23,12 +25,11 @@ class Model:
         self.note_book.replace(note_id, Note(note['header'], note['body']))
 
     def save_notes_to_storage(self):
-        self.storage.save(JSONDataAdapter.to_json(self.note_book))
+        self.storage.save(self.formatter.to_serial(self.note_book))
 
     def load_notes_from_storage(self):
         data = self.storage.load()
-        #print(data)
-        self.note_book = JSONDataAdapter.from_json(data)
+        self.note_book = self.formatter.from_serial(data)
 
     def is_exist(self, id):
-        self.note_book.is_exist(id)
+        return self.note_book.is_exist(id)

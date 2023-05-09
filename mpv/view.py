@@ -1,12 +1,13 @@
 from ui.main_menu import MainMenu
-from ui.user_choice_checker import MMChoiceChecker as checker
+from ui.user_choice_checker import MMChoiceChecker as Checker
+
 
 class View:
     def __init__(self):
         self.presenter = None
         self.main = MainMenu(self, 'Выберите номер команды:')
         self.keep_running = True
-        self.check = checker(self.main)
+        self.check = Checker(self.main)
 
     def start(self):
 
@@ -25,30 +26,38 @@ class View:
         print(self.main.console_face())
 
     def add_note(self):
-
-        note = {'header': input('Введите заголовок: ')}
-        note['body'] = input('Введите содержание: ')
+        note = {'header': input('Введите заголовок: '), 'body': input('Введите содержание: ')}
         self.presenter.add_note(note)
+        print('Заметка добавлена')
 
     def show_all_notes(self):
+        print('Содержимое записной книжки:\n')
         print(self.presenter.show_all_notes())
 
     def delete_note(self):
-        user_choice = input('Введите id заметки: ')
-        self.presenter.delete_note(user_choice)
+        user_choice = input('Введите ID заметки: ')
+        if self.presenter.is_exist(user_choice):
+            self.presenter.delete_note(user_choice)
+            print(f'Заметка ID: {user_choice} удалена')
+        else:
+            print('Такой заметки нет')
 
     def edit_note(self):
-        user_choice = input('Введите id заметки: ')
-        note = {'header': input('Введите заголовок: ')}
-        note['body'] = input('Введите содержание: ')
-        self.presenter.edit_note(user_choice, note)
-
+        user_choice = input('Введите ID заметки: ')
+        if self.presenter.is_exist(user_choice):
+            note = {'header': input('Введите заголовок: '), 'body': input('Введите содержание: ')}
+            self.presenter.edit_note(user_choice, note)
+            print(f'Заметка ID: {user_choice} изменена')
+        else:
+            print('Такой заметки нет')
 
     def save_notes(self):
         self.presenter.save_notes()
+        print('Записная книжка сохранена в файл')
 
     def load_notes(self):
         self.presenter.load_notes()
+        print('Данные из файла загружены в записную книжку')
 
     def exit_command(self):
         print('Работа завершена')

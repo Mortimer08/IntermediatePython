@@ -1,12 +1,14 @@
 from mpv.view import View
 from mpv.model import Model
 from storage.storage import FileStorage
+from storage.formatter import JsonFormatter
+
 
 class Presenter:
 
     def __init__(self):
         self.view = View()
-        self.model = Model(FileStorage())
+        self.model = Model(FileStorage(), JsonFormatter())
         self.view.set_presenter(self)
 
     def start(self):
@@ -30,5 +32,5 @@ class Presenter:
     def load_notes(self):
         self.model.load_notes_from_storage()
 
-    def is_exist(self, id):
-        self.model.is_exist(id)
+    def is_exist(self, note_id):
+        return self.model.is_exist(note_id)

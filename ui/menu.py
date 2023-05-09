@@ -30,5 +30,4 @@ class Menu:
         return self.console_view
 
     def run_menu_command(self, menu_item_number):
-        self.commands_list[menu_item_number-1].run_command()
-
+        self.commands_list[menu_item_number - 1].run_command()

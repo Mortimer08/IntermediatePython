@@ -1,5 +1,6 @@
 class NoteBook():
     id_queue = 1
+
     def __init__(self):
         self.notes_list = {}
 
@@ -19,24 +20,20 @@ class NoteBook():
         print('show_notes_younger_than_defined_date')
 
     def delete(self, note_id):
-        print(type(note_id))
-        print(self.notes_list)
         try:
             self.notes_list.pop(note_id)
         except:
-            print('Такой заметки нет')
+            print('Ошибка поиска заметки')
 
     def replace(self, note_id, note):
         try:
             self.notes_list[note_id] = note
         except:
-            print('Такой заметки нет')
+            print('Ошибка поиска заметки')
 
     def add(self, note):
         self.notes_list[str(self.id_queue)] = note
         self.id_queue += 1
-        # print('notebook_adding_note')
-
 
     def get(self, ID):
         print('returning_note_by_ID')
